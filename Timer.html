@@ -1,0 +1,314 @@
+<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<meta charset="utf-8">
+<title>Timer</title>
+</head>
+<style>
+
+body{
+width: 100%;
+height: 100%;
+background-color:black;
+}
+.timer-wrapper {
+position: absolute;
+top : 0;
+left: 25%;
+width: 100vh;
+height: 100vh;
+background-color: black;
+color : #fff;
+}
+.timer-wrapper > ul{
+height: 80%;
+width: 100%;
+display: block;
+margin: 0 auto;
+}
+
+.timer-wrapper > ul >li{
+position: absolute;
+left: 51%;
+top: 61%;
+display: block;
+background: transparent;
+border: 10px solid rgba(120,210,190, 1);
+border-left-color: transparent;
+border-right-color: transparenttransparent;
+border-radius: 500px;
+transition: all 0.5s ease;
+}
+
+.timer-wrapper > ul >li:last-child {
+position: absolute;
+left: 51.5%;
+top: 67%;
+z-index: 20;
+width: 200px;
+height: 100px;
+margin-left: -110px;
+margin-top: -110px;
+padding: 70px 0px 30px;
+background-color: transparent;
+border: 10px solid rgba(8,10,8,1);
+border-radius: 200px;
+text-shadow: 2px 2px 0px rgba(0,0,0,1);
+box-shadow: 0px 0px 30px rgba(23,246,251, 0.5);
+animation: pulseShadow 5s infinite linear;
+}
+
+.timer-wrapper > ul >li:last-child:after{
+content:'';
+border: 3px dotted rgba(130,130,113,1.0);
+border-radius: 200px;
+width: 200px;
+height: 200px;
+display: block;
+position: absolute;
+top:-50px;
+left:-10px;
+background-color: transparent;
+box-shadow: inset 0px 0px 30px rgba(0,0,0,1.0);
+}
+
+.timer-wrapper > ul >li:first-child{
+margin-left: -125px;
+margin-top: -125px;
+z-index: 2;
+width: 240px;
+height: 240px;
+border-width: 7px;
+animation: spinBG 5s infinite linear;
+}
+
+.timer-wrapper > ul >li:nth-child(2){
+margin-left: -140px;
+margin-top: -140px;
+z-index: 1;
+width: 270px;
+height: 270px;
+border-width: 2px;
+border-style: dotted;
+box-shadow: 0px 0px 20px rgba(23,246,251, .5);
+animation: spinBG2 2s infinite linear;
+}
+
+.timer-wrapper > ul >li:nth-child(3){
+margin-left: -150px;
+margin-top: -150px;
+z-index: 1;
+width: 296px;
+height: 296px;
+border-width: 2px;
+box-shadow: inset 0px 0px 25px rgba(23,246,251, .25);
+animation: spinBG 12s infinite linear;
+}
+
+
+#num {
+position: absolute;
+top : 63%;
+left : 53%;
+z-index: 200;
+margin-left: -12%;
+margin-top: -15%;
+font-size: 120px;
+    color:green;
+}
+
+/*-------------------------------------------
+Animations
+-------------------------------------------*/
+@keyframes pulseGlow{
+0%  {text-shadow: 0px 0px 20px rgba(23,246,251, 0.75);}
+50% {text-shadow: 0px 0px 40px rgba(23,246,251, 0.5); }
+100%{text-shadow: 0px 0px 20px rgba(23,246,251, 0.75);}
+}
+
+@keyframes pulseShadow{
+0%  {box-shadow: 0px 0px 30px rgba(255,0,0,0.7);}
+20%  {box-shadow: 0px 0px 30px rgba(255,0,0,0.4);}
+40% {box-shadow: 0px 0px 30px rgba(23,246,251, 0.5);}
+60%  {box-shadow: 0px 0px 30px rgba(23,246,251, 0.7);}
+80%{box-shadow: 0px 0px 30px rgba(23,246,251, 0.25);}
+100%  {box-shadow: 0px 0px 30px rgba(255,0,0,0.4);}
+}
+
+@keyframes spinBG{
+0%  {transform: rotate(0deg);}
+100%{transform: rotate(360deg);}
+}
+
+@keyframes spinBG2{
+0%{
+transform: rotate(180deg);
+box-shadow: 0px 0px 1px rgba(255,0,0, 0.4);
+}
+20%{
+transform: rotate(360deg);
+box-shadow: 0px 0px 1px rgba(255,0,0, 0.7);
+}
+40%{
+transform: rotate(200deg);
+box-shadow: 0px 0px 20px rgba(255,0,0, 0.4);
+}
+60%{
+transform: rotate(260deg);
+box-shadow: 0px 0px 1px rgba(0,246,251, 0.7);
+}
+80%{
+transform: rotate(200deg);
+box-shadow: 0px 0px 1px rgba(0,246,251, 0.5);
+}
+100%{
+transform: rotate(180deg);
+box-shadow: 0px 0px 1px rgba(255,0,0, 0.7);
+}
+}
+
+@keyframes spinBG3{
+0%{
+transform: rotate(180deg);
+box-shadow: 0px 0px 1px rgba(255,0,0, 0.4);
+}
+50%{
+transform: rotate(180deg);
+box-shadow: 0px 0px 1px rgba(255,0,0, 0.4);
+}
+100%{
+transform: rotate(180deg);
+box-shadow: 0px 0px 1px rgba(255,0,0, 0.4);
+}
+}
+
+#action1{
+width : 180px;
+line-height:150px;
+padding:20px;
+margin-right:10px;
+float:left;
+}
+#action2{
+width : 180px;
+line-height:150px;
+padding:20px;
+float:right;
+}
+#action3{
+width :180px;
+line-height:150px;
+padding:20px;
+float:left;
+}
+#top1 , #top2{
+height: 8%;
+font-size: 230%;
+font-style: italic;
+text-decoration: underline;
+text-align: center;
+}
+
+</style>
+<body>
+<p id="top1" class="bg-primary"></p>
+<div class="timer-wrapper">
+  <p id="top2" class="bg-primary">Countdown Timer</p>
+  <div id="action1"></div>
+  <div id="action2"></div>
+  <div id="action3"></div>
+  <span id="num">5</span>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+
+  </ul>
+  <p class="text-center">
+    <button type="button" class="btn btn-primary" onclick="pause()">Pause</button>
+    <button type="button" class="btn btn-primary" onclick="resume()">Resume</button>
+    <button type="button" class="btn btn-primary" onclick="reset()">Reset</button>
+    <button type="button" class="btn btn-primary" onclick="skip()">Skip A Second</button>
+  </p>
+</div>
+</body>
+<script>
+     var T;
+     var test=0;
+
+function minus() {
+if (document.getElementById("num")) {
+var curr = parseInt(document.getElementById("num").innerHTML);
+}
+
+if(curr && curr<=60 ) {
+
+if (curr<=10){
+document.getElementById("num").innerHTML = "0"+( curr - 1);
+          if(curr==1){
+            document.getElementById("action1").innerHTML = '<img src="firework1.gif"  alt="firework"/>'
+            setTimeout(function(){document.getElementById("action1").innerHTML = ""} ,3000);
+            setTimeout(function(){document.getElementById("action2").innerHTML = '<img src="firework4.gif"  alt="firework"/>'} ,1000);
+            setTimeout(function(){document.getElementById("action2").innerHTML = ""} ,4500);
+            setTimeout(function(){document.getElementById("action3").innerHTML = '<img src="firework3.gif"  alt="firework"/>'} ,2000);
+            setTimeout(function(){document.getElementById("action3").innerHTML = ""} ,6000);
+          }else{}
+} else {
+document.getElementById("num").innerHTML = curr - 1;
+}
+} else {
+document.getElementById("num").innerHTML = 60;
+}
+
+T=setTimeout(function() {
+minus();
+}, 1000);
+};
+
+     minus();
+
+   function pause() {
+      clearTimeout(T);
+      test=1;
+    }
+
+
+    function resume() {
+       if(test==1){
+       minus();
+       test=0;
+     }
+    }
+
+   function reset() {
+     document.getElementById("num").innerHTML= 60;
+      clearTimeout(T);
+      minus();
+    }
+
+    function skip() {
+      var curr = parseInt(document.getElementById("num").innerHTML);
+      clearTimeout(T);
+      minus();
+    }
+
+</script>
+</html>
+
+
+firework1.gif
+
+
+firework3.gif
+
+
+firework4.gif
